@@ -1,7 +1,7 @@
 # Semestrálna Práca - Blog
 Semestrálka pre predmet UNIX - Vývojové prostredie 2020/2021
 
-Jednoduchý blog využitím balíčka **Django**
+Jednoduchý blog vytvorený pomocou balíčka **Django**
 
 ### Inštalácia
 *Dobrovoľné* - vytvorenie si virtuálneho prostredia **env** a jeho aktivácia
