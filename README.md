@@ -1,14 +1,23 @@
-# Semestrálna Práca pre UNIX - Vývojové prostredie 2020/2021
-Jednoduchý blog vytvorený cez Django.
+# Semestrálna Práca - Blog
+Semestrálka pre predmet UNIX - Vývojové prostredie 2020/2021
 
-## Spustenie programu
+Jednoduchý blog využitím balíčka **Django**
 
-Pred prvým spustením je nutné nainštalovať si potrebné balíčky pomocou [pip](https://pip.pypa.io/en/stable/) aby program fungoval správne.
+### Inštalácia
+*Dobrovoľné* - vytvorenie si virtuálneho prostredia **env** a jeho aktivácia
+
+```bash
+python -m venv env
+env/bin/activate
+```
+
+Inštalácia potrebných balíčkov
 ```bash
 pip install -r requirements.txt
 ```
 
-Program je možné spustiť pomocou nasledovných príkazov:
+### Spustenie programu
+Spustenie programu pomocou príkazov
 ```bash
 cd blog
 python manage.py runserver
