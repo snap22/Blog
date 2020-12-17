@@ -8,8 +8,9 @@ Pred prvým spustením je nutné nainštalovať si potrebné balíčky pomocou [
 pip install -r requirements.txt
 ```
 
-Program je možné spustiť pomocou príkazu
+Program je možné spustiť pomocou nasledovných príkazov:
 ```bash
+cd blog
 python manage.py runserver
 ```
 
