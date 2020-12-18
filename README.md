@@ -19,7 +19,7 @@ pip install -r requirements.txt
 ### Spustenie programu
 Program je možné spustiť pomocou nasledovných príkazov:
 ```bash
-cd blog
+cd project
 python manage.py runserver
 ```
 
