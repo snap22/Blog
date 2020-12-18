@@ -1,5 +1,14 @@
 *~
 *.*~
 
+#pycache files
+*.pyc
+**/*.pyc
 
+
+project/blog/__pycache__
+project/blog/__pycache__/
+project/blog/__pycache__/*.pyc
+
+#virtual environment
 env
