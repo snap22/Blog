@@ -3,8 +3,8 @@
 
 #pycache files
 *.pyc
-**/*.pyc
 
+*/*.pyc
 
 project/blog/__pycache__
 project/blog/__pycache__/
