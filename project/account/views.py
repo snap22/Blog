@@ -8,7 +8,7 @@ def register(request):
         form = AccountCreationForm(request.POST)
         if form.is_valid():
             form.save()     # hodi uzivatela do databazy, a hashne heslo
-            messages.succes(request, f"Account was successfully created.")
+            messages.success(request, f"Account was created successfully.")
             return redirect("blog-home")
     else:
         form = AccountCreationForm()
