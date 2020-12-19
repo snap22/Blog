@@ -1,0 +1,25 @@
+{% extends "blog/basic.html" %}
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            <!-- Token for django forms -->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3"> Create an account </legend>
+                {{ form }}
+            </fieldset>
+
+            <!-- Submit button  -->
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Sign up</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Already have an account? <a href="#" class="ml-2">Sign in</a> instead
+            </small>
+
+        </div>
+
+    </div>
+{% endblock content %}
