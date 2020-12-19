@@ -6,7 +6,7 @@ def register(request):
     if request.method == "POST":
         form = UserCreationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data.get("username")
+            form.save()     # hodi uzivatela do databazy, a hashne heslo
             messages.succes(request, f"Account was successfully created.")
             return redirect("blog-home")
     else:
