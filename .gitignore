@@ -12,3 +12,6 @@ project/blog/__pycache__/*.pyc
 
 #virtual environment
 env
+
+#other stuff
+other
