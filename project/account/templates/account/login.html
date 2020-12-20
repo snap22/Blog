@@ -1,0 +1,26 @@
+{% extends "blog/basic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            <!-- Token for django forms -->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3"> Log In </legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            <!-- Submit button  -->
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Log In</button>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+                Don't have an account? <a href="#" class="ml-2">Sign up</a> 
+            </small>
+
+        </div>
+
+    </div>
+{% endblock content %}
