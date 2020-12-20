@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import logout
+from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
 
 
@@ -14,7 +14,9 @@ def register(request):
     if request.method == "POST":
         form = AccountCreationForm(request.POST)
         if form.is_valid():
-            form.save()     # hodi uzivatela do databazy, a hashne heslo
+            form.save()     # ulozi uzivatela do databazy a zaroven hashne jeho heslo
+            new_user = authenticate(username=form.cleaned_data['username'],password=form.cleaned_data['password1'])
+            login(request, new_user)
             messages.success(request, f"Account was created successfully.")
             return redirect("blog-home")
     else:
