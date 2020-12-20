@@ -1,0 +1,40 @@
+html, body {
+    background-image: url("welcome.jpg");
+    max-width: 100%;
+    
+}
+
+img {
+    max-width: 100%;
+    
+}
+
+.brand-register {
+    font-family: "Lobster";
+    font-size: 40px;
+    /* margin-top: 115px; */
+}
+
+.brand-name {
+    font-family: "Lobster";
+    font-size: 100px;
+    color: white;
+    text-shadow: 4px 4px #000;
+}
+
+.brand-description {
+    color: black;
+    font-size: 20px;
+    
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute;
+    top: 25%;
+    left: 40%;
+}
+
