@@ -123,3 +123,9 @@ USE_TZ = True
 STATIC_URL = "/static/"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+LOGIN_REDIRECT_URL = "blog-home"  # redirect ak sa uspesne prihlasim
+
+LOGIN_URL = "login"               # redirect ak je stranka login_required a uzivatel nie je prihlaseny
+
+LOGOUT_REDIRECT_URL = "blog-welcome"    #redirect ak sa uzivatel odhlasi

@@ -21,19 +21,3 @@ def register(request):
         form = AccountCreationForm()
     return render(request, "account/register.html", {"form": form})
 
-
-
-def login_view(request):
-    """ Prihlásenie užívateľa """
-
-    pass
-
-
-
-@login_required
-def logout_view(request):
-    """ Odhlásenie užívateľa """
-
-    logout(request)
-    messages.info(request, "You have been logged out.")
-    return redirect("blog-welcome")
