@@ -19,7 +19,7 @@ img {
     font-family: "Lobster";
     font-size: 100px;
     color: white;
-    text-shadow: 4px 4px rgba(224, 27, 27, 0.87);
+    text-shadow: 4px 4px #000;
 }
 
 .brand-description {
