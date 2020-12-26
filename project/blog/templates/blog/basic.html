@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     
     <!-- Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Lobster" />
     <!-- My css -->
     {% load static %}
@@ -51,17 +53,18 @@
 
             <li class="nav-item dropdown ">
               <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <i class="fa fa-user-circle-o " aria-hidden="true"></i>
                 <b> {{ user.username }} </b>
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Add Post</a>
-                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="{% url 'account-profile' %}">Profile</a>
                 <div class="dropdown-divider"></div>
 
                 {% if user.is_superuser %}
                  
-                  <a class="dropdown-item text-danger" href="{% url 'admin:index' %}">Manage</a>
+                  <a class="dropdown-item text-danger" href="{% url 'admin:index' %}">Manage </a>
                   <div class="dropdown-divider"></div>
                 {% endif %}
 
