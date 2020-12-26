@@ -13,5 +13,8 @@ project/blog/__pycache__/*.pyc
 #virtual environment
 env
 
+#profile pictures - non default
+project/media/profile_pictures/
+
 #other stuff
 other
