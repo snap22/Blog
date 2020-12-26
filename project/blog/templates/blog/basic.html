@@ -14,9 +14,9 @@
 
 
     {% if title %}
-        <title>The Blog - {{ title }}</title>
+        <title> Blob - {{ title }} </title>
     {% else %}
-        <title>The Blog</title>
+        <title> Blob </title>
     {% endif %}
 </head>
 <body>
@@ -32,11 +32,16 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
             </li>
+            
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#">Browse</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link text-muted" href="#">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Contact</a>
+              <a class="nav-link text-muted" href="#">Contact</a>
             </li>
             
           </ul>
@@ -45,8 +50,8 @@
             {% if user.is_authenticated %}
 
             <li class="nav-item dropdown ">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ user.username }}
+              <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <b> {{ user.username }} </b>
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -56,7 +61,7 @@
 
                 {% if user.is_superuser %}
                  
-                  <a class="dropdown-item text-danger" href="{% url 'admin:index' %}">Admin</a>
+                  <a class="dropdown-item text-danger" href="{% url 'admin:index' %}">Manage</a>
                   <div class="dropdown-divider"></div>
                 {% endif %}
 
