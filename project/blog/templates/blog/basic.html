@@ -62,7 +62,7 @@
               </a>
 
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Add Post</a>
+                <a class="dropdown-item" href="{% url 'blog-post-new' %}">Add Post</a>
                 <a class="dropdown-item" href="{% url 'account-profile' %}">Profile</a>
                 <div class="dropdown-divider"></div>
 
@@ -104,14 +104,22 @@
             </div>
         </div>
 
+
         <div class="row">
             <div class="col-md-2"></div>
+            <!-- Content - Normal -->
             <div class="col-md-6">
                 {% block content %}
                 {% endblock content%}
             </div>
         </div>
         
+        <div class="row">
+          <div class="col-md">
+              {% block content_big %}
+              {% endblock content_big %}
+          </div>
+        </div>
     </div>
 
     <!-- Footer -->
