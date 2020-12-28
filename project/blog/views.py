@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostCreationForm
 
@@ -23,5 +24,15 @@ def welcome(request):
 def post_new(request):
     """ Tvorba nového príspevku """
 
-    form = PostCreationForm()
+    if request.method == "POST":
+        form = PostCreationForm(request.POST)
+        if form.is_valid():
+            created_post = form.save(commit=False)
+            created_post.author = request.user
+            created_post.save()
+
+            messages.success(request,"Post creation was successful.")
+            return redirect("blog-home")
+    else:
+        form = PostCreationForm()
     return render(request, "blog/posts/post_add.html", {"form": form})
