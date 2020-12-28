@@ -24,10 +24,11 @@ def register(request):
     return render(request, "account/register.html", {"form": form})
 
 
+#Possible Exception: RelatedObjectDoesNotExist
 @login_required
 def profile(request):
     """ Profil užívateľa """
-
+    
     if request.method == "POST":
         user_form = AccountUpdateForm(request.POST, instance=request.user)
         profile_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
