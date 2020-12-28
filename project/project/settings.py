@@ -135,3 +135,17 @@ LOGIN_REDIRECT_URL = "blog-home"  # redirect ak sa uspesne prihlasim
 LOGIN_URL = "login"               # redirect ak je stranka login_required a uzivatel nie je prihlaseny
 
 LOGOUT_REDIRECT_URL = "blog-welcome"    #redirect ak sa uzivatel odhlasi
+
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 10,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': 'print preview paste importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists wordcount textpattern noneditable help charmap quickbars emoticons',
+    'toolbar1': 'undo redo | bold italic underline strikethrough | forecolor backcolor removeformat | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist  ',
+    'toolbar2': 'charmap emoticons | fullscreen  preview save print | insertfile image  template link anchor codesample | ltr rtl',
+    'menubar': ' | pagebreak | file edit view insert format tools table help',
+    'menubar': True,
+    'statusbar': True,
+    'height':500,
+}
