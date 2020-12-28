@@ -7,17 +7,27 @@
 
 {% block content_big %}
 
-    <form method="post">
+    <div class="border-bottom pb-2">
+        <h1 class="mt-1"> New Post </h1>
+    </div>
+    
+
+    <form method="post" class="mt-1">
         <!-- Token for django forms -->
         {% csrf_token %}
         <fieldset class="form-group">
-            <legend class="border-bottom mb-3"> New Post </legend>
-            {{ form|crispy }}
+            {{ form | crispy }}
         </fieldset>
 
         <!-- Submit button  -->
-        <div class="form-group mt-3">
-            <button class="btn btn-outline-dark" type="submit">Publish</button>
+        <div class="form-group mt-1 border-top mb-2">
+            <button class="btn btn-lg btn-danger mt-1 pull-right ml-2" type="submit"> Cancel </button>
+            <button class="btn btn-lg btn-dark mt-1 pull-right" type="submit"> Publish </button>
+            
+        </div>
+
+        <div class="mt-2">
+
         </div>
     </form>
 
