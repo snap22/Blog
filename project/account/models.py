@@ -10,10 +10,10 @@ class Profile(models.Model):
     picture = models.ImageField(default="default.png", upload_to="profile_pictures")
     
 
-    def save(self):
+    def save(self, *args, **kwargs):
         """ Override pre uloženie - uloží obrázok vo vhodnej forme """
 
-        super().save()
+        super().save(*args, **kwargs)
         
         image = Image.open(self.picture.path)
         
