@@ -71,7 +71,7 @@
                 {% else %}
                     <div class="col-md mt-3 mb-3 rounded border border-dark p-2 text-center">
                         <h4>
-                            You have to be <a href="{% url 'login' %}" class="text-info">logged in</a>  to comment.
+                            You have to be <a href="{% url 'login' %}?next={{ request.path }}" class="text-info">logged in</a>  to comment.
                         </h4>
                     </div>
                 {% endif %}
