@@ -1,8 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .forms import PostCreationForm
+from .models import Post, Comment
 
 # Create your views here.
 
@@ -36,3 +37,14 @@ def post_new(request):
     else:
         form = PostCreationForm()
     return render(request, "blog/posts/post_add.html", {"form": form})
+
+
+def post_view(request, post_id):
+    """ Zobrazenie konkrétneho príspevku """
+    
+    found_post = get_object_or_404(Post, pk=post_id)
+    context = {
+        "post": found_post,
+    }
+
+    return render(request, "blog/posts/post_view.html", context)
