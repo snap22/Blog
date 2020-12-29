@@ -1,9 +1,38 @@
 {% extends "blog/basic.html" %}
 {% block dependencies %} 
-
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/postStyle.css' %}">
 {% endblock dependencies %}
-{% block content %}
+{% block content_big %}
+    <div class="post-detail">
+        <div class="row">
+            <div class="col-md">
+                <h1 class="post-title">
+                    {{ post.title }}
+                </h1>
+            </div>
+        </div>
 
+        <div class="row">
+            <div class="col-md ">
+                {{ post.content|safe }}
+            </div>
+        </div>
+        <div class="row border-bottom mt-3">
 
-    
-{% endblock content %}
+        </div>
+        <div class="row">
+            <div class="col-md">
+                <div class="text-muted">
+                    Posted by <a href="#" class="text-info"> {{ post.author.username }} </a> on
+                    {{ post.date|date:"d F, Y" }}
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="post-comment-section">
+
+    </div>
+{% endblock content_big %}
