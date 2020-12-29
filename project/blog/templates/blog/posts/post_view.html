@@ -8,7 +8,7 @@
 {% block content_big %}
     <!-- Post Section -->
     <div class="post-detail rounded">
-        <div class="row">
+        <div class="row mb-5 border-bottom ">
             <div class="col-md">
                 <h1 class="post-title">
                     {{ post.title }}
@@ -45,7 +45,7 @@
             <div class="col-md">
                 {% if user.is_authenticated %}
 
-                    <div class="col-md mt-3 rounded border border-dark p-2">  
+                    <div class="col-md mt-3 mb-3 rounded border border-dark p-2">  
                         <form method="post" class="mt-1 " >
                             {% csrf_token %}
                             <div class="form-row  p-2">
@@ -69,8 +69,10 @@
                         
                     </div>
                 {% else %}
-                    <div>
-                        You have to be logged in to comment.
+                    <div class="col-md mt-3 mb-3 rounded border border-dark p-2 text-center">
+                        <h4>
+                            You have to be <a href="{% url 'login' %}" class="text-info">logged in</a>  to comment.
+                        </h4>
                     </div>
                 {% endif %}
             </div>
