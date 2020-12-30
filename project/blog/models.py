@@ -34,6 +34,3 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment to: [{self.post.title}] by {self.author.username}"
-
-    def get_absolute_url(self):
-        return reverse("blog-post-view", kwargs={"pk" : self.post.pk})
