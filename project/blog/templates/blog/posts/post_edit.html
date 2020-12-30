@@ -1,10 +1,36 @@
 {% extends "blog/basic.html" %}
-{% block dependencies %} 
-    
+{% block dependencies %}
+    {{ form.media }}
 {% endblock dependencies %}
-{% block content %}
 
+{% load crispy_forms_tags %}
+
+{% block content_big %}
+
+    <div class="border-bottom pb-2">
+        <h1 class="mt-1"> New Post </h1>
+    </div>
     
 
+    <form method="post" class="mt-1">
+        <!-- Token for django forms -->
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form.title|as_crispy_field }}
+            {{ form.content|as_crispy_field|safe }}
+        </fieldset>
+
+        <!-- Submit button  -->
+        <div class="form-group mt-1 border-top mb-2">
+            <a href="{% url 'blog-home' %}" class="btn btn-lg btn-danger mt-1 pull-right ml-2"> Cancel </a>
+            <button class="btn btn-lg btn-primary mt-1 pull-right" type="submit"> Edit </button>
+            
+        </div>
+
+        <div class="mt-2">
+
+        </div>
+    </form>
+
     
-{% endblock content %}
+{% endblock content_big %}
