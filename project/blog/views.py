@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -73,18 +74,33 @@ def post_view(request, pk):
 
 
 
-class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """ Upravenie daného príspevku """
 
     model = Post
     fields = ["title","content"]
     template_name = "blog/posts/post_edit.html"
+    success_message = "%(title)s was edited."
 
     def form_valid(self, form):
         """ Nastaví prihláseného užívateľa ako autora príspevku """
 
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+    def test_func(self):
+        """ Funkcia, ktorá overí či prihlásený užívateľ je autorom príspevku """
+
+        post = self.get_object()
+        return self.request.user == post.author
+
+class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    """ Vymazanie daného príspevku """
+
+    model = Post
+    success_url = "/"
+    template_name = "blog/posts/post_confirm_delete.html"
+    success_message = "%(title)s was removed."
 
     def test_func(self):
         """ Funkcia, ktorá overí či prihlásený užívateľ je autorom príspevku """
