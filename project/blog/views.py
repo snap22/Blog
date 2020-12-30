@@ -5,11 +5,13 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse
 from .forms import PostCreationForm, CommentCreationForm
 from .models import Post, Comment
 
-# Create your views here.
 
+
+# BASIC
 def home(request):
     """ Domovská stránka"""
 
@@ -24,6 +26,7 @@ def welcome(request):
     return render(request, "blog/welcome.html")
 
 
+# POSTS
 @login_required
 def post_new(request):
     """ Tvorba nového príspevku """
@@ -40,7 +43,6 @@ def post_new(request):
     else:
         form = PostCreationForm()
     return render(request, "blog/posts/post_add.html", {"form": form})
-
 
 
 def post_view(request, pk):
@@ -72,8 +74,6 @@ def post_view(request, pk):
     return render(request, "blog/posts/post_view.html", context)
 
 
-
-
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
     """ Upravenie daného príspevku """
 
@@ -94,6 +94,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         post = self.get_object()
         return self.request.user == post.author
 
+
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
     """ Vymazanie daného príspevku """
 
@@ -107,3 +108,51 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
 
         post = self.get_object()
         return self.request.user == post.author
+
+# Post Lists view
+
+
+# COMMENTS
+class CommentUpdateView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, UpdateView):
+    """ Úprava komentára """
+
+    model = Comment
+    fields = ["content"]
+    template_name = "blog/comments/comment_edit.html"
+    success_message = "Your comment was edited."
+
+    def form_valid(self, form):
+        """ Nastaví prihláseného užívateľa ako autora komentára """
+
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+    
+    def test_func(self):
+        """ Funkcia, ktorá overí či prihlásený užívateľ je autorom komentára """
+
+        comment = self.get_object()
+        return self.request.user == comment.author
+
+    def get_success_url(self):
+        """ Funkcia, ktorá určí kam má byť užívateľ presmerovaný po vymazaní komentára """
+
+        return reverse("blog-post-view", kwargs={"pk" : self.get_object().post.id })
+
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixin, DeleteView):
+    """ Vymazanie komentára """
+
+    model = Comment
+    template_name = "blog/comments/comment_confirm_delete.html"
+    success_message = "Your comment was removed."
+
+    def test_func(self):
+        """ Funkcia, ktorá overí či prihlásený užívateľ je autorom komentára """
+
+        comment = self.get_object()
+        return self.request.user == comment.author
+
+    def get_success_url(self):
+        """ Funkcia, ktorá určí kam má byť užívateľ presmerovaný po vymazaní komentára """
+
+        return reverse("blog-post-view", kwargs={"pk" : self.get_object().post.id })
