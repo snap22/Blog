@@ -11,6 +11,9 @@ from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm
 def register(request):
     """ Registrácia užívateľa """
     
+    if request.user.is_authenticated:
+        return redirect("blog-home")
+
     if request.method == "POST":
         form = AccountCreationForm(request.POST)
         if form.is_valid():
