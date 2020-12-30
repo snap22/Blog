@@ -101,12 +101,10 @@
                                     
                                 </button>
                                 <div class="dropdown-menu">
-                                    <a class="dropdown-item text-dark" href="#"> Edit </a>
-                                    <a class="dropdown-item text-danger" href="#"> Delete </a>
+                                    <a class="dropdown-item text-dark" href="{% url 'blog-comment-edit' comment.id %}"> Edit </a>
+                                    <a class="dropdown-item text-danger" href="{% url 'blog-comment-delete' comment.id %}"> Delete </a>
                                 </div>
                             </div>
-                            <!-- <a href="#" class="btn btn-sm btn-primary"><i class="fa fa-pencil" aria-hidden="true"> </i> Edit </a>
-                            <a href="#" class=" btn btn-sm btn-danger "><i class="fa fa-times" aria-hidden="true"> </i> Delete </a> -->
                         {% endif %}
                     </div>
                 </div>
