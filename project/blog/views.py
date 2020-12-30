@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import UpdateView, DeleteView
 from .forms import PostCreationForm, CommentCreationForm
 from .models import Post, Comment
 
@@ -40,10 +42,10 @@ def post_new(request):
 
 
 
-def post_view(request, post_id):
+def post_view(request, pk):
     """ Zobrazenie konkrétneho príspevku """
     
-    found_post = get_object_or_404(Post, pk=post_id)
+    found_post = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter(post=found_post).order_by("-date")
 
     #formulár pre komentár
@@ -67,3 +69,25 @@ def post_view(request, post_id):
     }
 
     return render(request, "blog/posts/post_view.html", context)
+
+
+
+
+class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    """ Upravenie daného príspevku """
+
+    model = Post
+    fields = ["title","content"]
+    template_name = "blog/posts/post_edit.html"
+
+    def form_valid(self, form):
+        """ Nastaví prihláseného užívateľa ako autora príspevku """
+
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        """ Funkcia, ktorá overí či prihlásený užívateľ je autorom príspevku """
+
+        post = self.get_object()
+        return self.request.user == post.author
