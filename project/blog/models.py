@@ -20,6 +20,12 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse("blog-post-view", kwargs={"pk" : self.pk})
+    
+    # def save(self, *args, **kwargs):
+    #     if "user" in kwargs:
+    #         self.author = kwargs.get("user")
+
+    #     super(Post, self).save(args, kwargs)
 
 
 
@@ -34,3 +40,12 @@ class Comment(models.Model):
 
     def __str__(self):
         return f"Comment to: [{self.post.title}] by {self.author.username}"
+
+    # def save(self, *args, **kwargs):
+    #     if "user" in kwargs:
+    #         self.author = kwargs.get("user")
+        
+    #     if "post" in kwargs:
+    #         self.post = kwargs.get("post")
+
+    #     super(Comment, self).save( args, kwargs)
