@@ -1,0 +1,39 @@
+{% extends "blog/basic.html" %}
+{% block content_big %}
+
+    <h1>Results</h1>
+
+    {% for post in object_list %}
+        <div class="card  mt-4">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-1">
+                        <img src="{{ post.author.profile.picture.url }}" alt="Profile Picture" class="" width="70" height="70">
+                    </div>
+
+                    <div class="col-md">
+                        <h5>
+                            <span class="text-dark"> </span> <a href="#" class="text-info">{{post.author.username}}</a>
+                        </h5>
+                        <h1 class="">
+                            <a href="{% url 'blog-post-view' post.id %}" class="text-dark font-weight-bold">{{ post.title|upper }}</a> 
+                        </h1>
+                        
+                    </div>
+ 
+                </div>
+
+                <div class="row mt-2">
+                    <div class="col-md">
+                        <div class="border-top text-muted">
+                            Posted on {{ post.date|date:"G:i D d, F Y " }}
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    {% endfor %}
+
+    
+{% endblock content_big %}
