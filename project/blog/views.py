@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic.edit import UpdateView, DeleteView
+from django.views.generic import UpdateView, DeleteView, ListView
 from django.urls import reverse
 from .forms import PostCreationForm, CommentCreationForm
 from .models import Post, Comment
@@ -110,6 +110,13 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         return self.request.user == post.author
 
 # Post Lists view
+class PostListView(ListView):
+    """ Zobrazenie príspevkov """
+
+    model = Post
+    ordering = ["-date"]
+    template_name = "blog/browse.html"
+    #paginate_by = 10
 
 
 # COMMENTS
