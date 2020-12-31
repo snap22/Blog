@@ -22,7 +22,7 @@
 
         <!-- Submit button  -->
         <div class="form-group mt-1 border-top mb-2">
-            <a href="{% url 'blog-post-view' object.id %}" class="btn btn-lg btn-secondary mt-1 pull-right ml-2"> Cancel </a>
+            <a href="{% url 'blog-post-view' object.post.id %}" class="btn btn-lg btn-secondary mt-1 pull-right ml-2"> Cancel </a>
             <button class="btn btn-lg btn-danger mt-1 pull-right" type="submit"> Delete </button>
             
         </div>
