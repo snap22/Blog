@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import UpdateView, DeleteView, ListView
+from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse
 from .forms import PostCreationForm, CommentCreationForm, SearchPostsForm
 from .models import Post, Comment
@@ -47,11 +47,6 @@ def browse_posts(request):
     
     form = SearchPostsForm(initial=default_form_values)
     found_posts = Post.objects.filter(title__contains=post_title, author__username__contains=post_author).order_by("-date")
-
-        
-    # else:
-    #     form = SearchPostsForm(request.POST)
-    #     found_posts = Post.objects.order_by("-date")
 
     context = {
         "posts": found_posts,
@@ -144,15 +139,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         post = self.get_object()
         return self.request.user == post.author
 
-
-
-class PostListView(ListView):
-    """ Zobrazenie príspevkov """
-
-    model = Post
-    ordering = ["-date"]
-    template_name = "blog/browse.html"
-    #paginate_by = 10
 
 
 # COMMENTS
