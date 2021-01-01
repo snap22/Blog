@@ -1,9 +1,27 @@
 {% extends "blog/basic.html" %}
+{% load crispy_forms_tags %}
 {% block content_big %}
 
-    <h1>Results</h1>
+    <div class="mb-5 bg-light">
+        <div>
+            <form method="GET" class="mt-1 p-2"> 
+                <fieldset class="form-group m-3">
+                    {{ form|crispy }}
+                    <button class="btn btn-lg btn-primary mt-1 pull-right" type="submit"> Search </button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 
-    {% for post in object_list %}
+    <div class="mt-5 mb-5">
+        {% if request.GET.title or request.GET.author %}
+            <h1> Search results for <b> {{request.GET.title }}</b> , <span class="text-info"> {{ request.GET.author }} </span> </h1>
+        {% else %}
+            <h1> Browse posts </h1>
+        {% endif %}
+    </div>
+
+    {% for post in posts %}
         <div class="card  mt-4">
             <div class="card-body">
                 <div class="row">
