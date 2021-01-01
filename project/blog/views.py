@@ -6,8 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import UpdateView, DeleteView, ListView
 from django.urls import reverse
-from .forms import PostCreationForm, CommentCreationForm
+from .forms import PostCreationForm, CommentCreationForm, SearchPostsForm
 from .models import Post, Comment
+
 
 
 
@@ -27,6 +28,40 @@ def welcome(request):
 
 
 # POSTS
+def browse_posts(request):
+    """ Vyhlľadávanie príspevkov na základe zadaného titulu a autora """
+
+    post_title = request.GET.get("title")
+    post_author = request.GET.get("author")
+
+    default_form_values = {
+        "author": post_author,
+        "title": post_title,
+    }
+
+    if not post_title:
+        post_title = ""
+
+    if not post_author:
+        post_author = ""
+    
+    form = SearchPostsForm(initial=default_form_values)
+    found_posts = Post.objects.filter(title__contains=post_title, author__username__contains=post_author).order_by("-date")
+
+        
+    # else:
+    #     form = SearchPostsForm(request.POST)
+    #     found_posts = Post.objects.order_by("-date")
+
+    context = {
+        "posts": found_posts,
+        "form": form,
+
+    }
+    return render(request, "blog/browse.html", context=context)
+
+
+
 @login_required
 def post_new(request):
     """ Tvorba nového príspevku """
@@ -109,7 +144,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, SuccessMessageMixi
         post = self.get_object()
         return self.request.user == post.author
 
-# Post Lists view
+
+
 class PostListView(ListView):
     """ Zobrazenie príspevkov """
 
