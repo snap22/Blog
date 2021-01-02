@@ -32,8 +32,8 @@
     
 
     <div class="mt-5 mb-5">
-        {% if request.GET.title or request.GET.author %}
-            <h1> Search results for <b> {{request.GET.title }}</b> <span class="text-info"> {{ request.GET.author }} </span> </h1>
+        {% if request.GET.search %}
+            <h1> Search results for <b> {{request.GET.search }}</b>  ({{count}})</h1>
         {% else %}
             <h1> Browse posts </h1>
         {% endif %}
