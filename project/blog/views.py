@@ -7,6 +7,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse
 from django.db.models import Q
+from account.models import User
 from .forms import PostCreationForm, CommentCreationForm, SearchPostsForm
 from .models import Post, Comment
 
@@ -17,10 +18,24 @@ from .models import Post, Comment
 def home(request):
     """ Domovská stránka"""
 
-    if request.user.is_authenticated:
-        return render(request, "blog/home.html")
-    else:
+    if not request.user.is_authenticated:
         return redirect("blog-welcome")
+    
+    posts_count = Post.objects.all().count()
+    users_count = User.objects.all().count()
+    comments_count = Comment.objects.all().count()
+
+    context = {
+        "title": "Home",
+        "posts_count": posts_count,
+        "users_count": users_count,
+        "comments_count": comments_count,
+    }
+
+
+    return render(request, "blog/home.html", context=context)
+    
+        
 
 def welcome(request):
     """ Úvodná stránka """

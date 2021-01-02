@@ -1,7 +1,21 @@
 {% extends "blog/basic.html" %}
-{% block content %}
+{% block dependencies %}
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/homeStyle.css' %}">
+{% endblock dependencies %}
+{% block content_big %}
 
     <h1>Welcome to the <s>jungle</s> BLOG</h1>
+    <div>
+        Number of posts: {{posts_count}}
+    </div>
+    <div>
+        Number of registered users: {{users_count}}
+
+    </div>
+    <div>
+        Number of comments: {{comments_count}}
+    </div>
 
     
-{% endblock content %}
+{% endblock content_big %}
