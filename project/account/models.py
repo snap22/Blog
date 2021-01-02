@@ -8,6 +8,7 @@ class Profile(models.Model):
 
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     picture = models.ImageField(default="default.png", upload_to="profile_pictures")
+    info = models.TextField(default="No info was provided", blank=True, null=True)
     
 
     def save(self, *args, **kwargs):
