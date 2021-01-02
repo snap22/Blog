@@ -8,11 +8,12 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h2> <b> {{ user.username }} </b> </h2>
+            <h2 class="display-2"> <b> {{ user.username }} </b> </h2>
             <h5> {{ user.email }} </h5>
-            <p class="text-info mt-3">
-                10 Followers  <br>
-                2 Following
+            <p class="text-dark mt-3">
+                <blockquote class="blockquote">
+                    <p class="mb-0">{{ user.profile.info }}</p>
+                  </blockquote>
             </p>
         </div>
     </div>
