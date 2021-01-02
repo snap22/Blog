@@ -25,7 +25,6 @@ class CommentCreationForm(forms.ModelForm):
 class SearchPostsForm(forms.Form):
     """ Formulár na vyhľadávanie príspevkov """
 
-    title = forms.CharField(label="Title of the post", required=False, max_length=100, widget=forms.TextInput(attrs={'name': 'title', 'placeholder':'Search for the title'}))
-    author = forms.CharField(label="Author of the post", required=False, max_length=100, widget=forms.TextInput(attrs={'name': 'author','placeholder':'Search for the author'}))
-
+    search = forms.CharField(label="Search by", required=False, max_length=100, widget=forms.TextInput(attrs={'name': 'search','placeholder':'Search for the author or the title'}))
+    order_by = forms.ChoiceField(label="Search by the most recent", choices=(("new","Most Recent"), ("old","Oldest")))
 
