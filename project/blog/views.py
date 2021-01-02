@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import UpdateView, DeleteView
 from django.urls import reverse
+from django.db.models import Q
 from .forms import PostCreationForm, CommentCreationForm, SearchPostsForm
 from .models import Post, Comment
 
@@ -31,27 +32,25 @@ def welcome(request):
 def browse_posts(request):
     """ Vyhlľadávanie príspevkov na základe zadaného titulu a autora """
 
-    post_title = request.GET.get("title")
-    post_author = request.GET.get("author")
+    post_search = request.GET.get("search")
+    post_order = request.GET.get("order_by")
+
+    order = "date" if post_order == "old" else "-date"
 
     default_form_values = {
-        "author": post_author,
-        "title": post_title,
+        "search": post_search,
     }
 
-    if not post_title:
-        post_title = ""
-
-    if not post_author:
-        post_author = ""
+    if post_search == None:
+        post_search = ""
     
     form = SearchPostsForm(initial=default_form_values)
-    found_posts = Post.objects.filter(title__contains=post_title, author__username__contains=post_author).order_by("-date")
+    found_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
 
     context = {
         "posts": found_posts,
         "form": form,
-
+        "title": "Search"
     }
     return render(request, "blog/browse.html", context=context)
 
