@@ -33,6 +33,15 @@
                 
             </div>
         </div>
+
+        <div class="row mt-3">
+            <div class="col-md">
+                {% if user == post.author %}
+                    <a class="btn btn-primary" href="{% url 'blog-post-edit' post.id %}"> Edit </a>
+                    <a class="btn btn-danger" href="{% url 'blog-post-delete' post.id %}"> Delete </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
 
     <!-- Comment Section -->
