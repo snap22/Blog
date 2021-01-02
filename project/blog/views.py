@@ -46,11 +46,12 @@ def browse_posts(request):
     
     form = SearchPostsForm(initial=default_form_values)
     found_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
-
+    count = found_posts.count()
     context = {
         "posts": found_posts,
         "form": form,
-        "title": "Search"
+        "title": "Search",
+        "count": count,
     }
     return render(request, "blog/browse.html", context=context)
 
