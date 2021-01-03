@@ -5,17 +5,32 @@
 {% endblock dependencies %}
 {% block content_big %}
 
-    <h1>Welcome to the <s>jungle</s> BLOG</h1>
-    <div>
-        Number of posts: {{posts_count}}
+<div class="card-deck">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center display-1"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </h5>
+        <p class="card-text text-center h1"> More than <b> {{posts_count}} </b>creative posts </p>
+      </div>
+      
     </div>
-    <div>
-        Number of registered users: {{users_count}}
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center display-1"><i class="fa fa-users" aria-hidden="true"></i></h5>
+        <p class="card-text text-center h1"> Currently with <b>{{users_count}}</b> users registered</p>
+      </div>
+      
+    </div>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title text-center display-1"><i class="fa fa-comment-o" aria-hidden="true"></i></h5>
+        <p class="card-text text-center h1">Over <b>{{comments_count}}</b> comments</p>
+      </div>
+      
+    </div>
+  </div>
+<div class="background-image">
 
-    </div>
-    <div>
-        Number of comments: {{comments_count}}
-    </div>
 
+  
     
 {% endblock content_big %}
