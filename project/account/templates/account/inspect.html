@@ -1,0 +1,39 @@
+{% extends "blog/basic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="row">
+        <div class="col-md-3 ">
+            <div class="border-right">
+                <img src="{{ found_user.profile.picture.url }}" alt="Profile Picture" class="float-left rounded" width="250" height="250">
+            </div>
+        </div>
+        <div class="col-md ">
+            
+
+            <div class="bg-dark text-center text-light font-weight-bold rounded">
+                <b class="display-3"> {{ found_user.username }} </b>
+            </div>
+            
+            <h5 class="display-4 text-center"> {{ found_user.email }} </h5>
+            <p class="text-dark mt-3">
+                <blockquote class="blockquote bg-light rounded p-4 text-center">
+                    <p class="mb-0"> <em>{{ found_user.profile.info }}</em> </p>
+                  </blockquote>
+            </p>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-md">
+            <div>
+                Posts published: {{ posts_count }}
+            </div>
+
+            <div>
+                Comments posted: {{ comments_count }}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock content %}
