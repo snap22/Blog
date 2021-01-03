@@ -27,7 +27,7 @@
         <div class="row">
             <div class="col-md">
                 <div class="text-muted">
-                    Posted by <a href="#" class="text-info"> {{ post.author.username }} </a> on
+                    Posted by <a href="{% url 'account-profile-inspect' post.author.id %}" class="text-info"> {{ post.author.username }} </a> on
                     {{ post.date|date:"d F, Y" }}
                 </div>
                 
@@ -101,7 +101,7 @@
                             {{ comment.content }}
                         </div>
                         <div class="text-muted comment-detail">
-                            Comment posted by <a href="#" class="text-info">{{ comment.author.username }}</a> on {{ comment.date|date:"d F, Y"}}
+                            Comment posted by <a href="{% url 'account-profile-inspect' comment.author.id %}" class="text-info">{{ comment.author.username }}</a> on {{ comment.date|date:"d F, Y"}}
                         </div>
                     </div>
                     <div class="col-md-1">
