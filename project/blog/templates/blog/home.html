@@ -5,31 +5,46 @@
 {% endblock dependencies %}
 {% block content_big %}
 
-<div class="card-deck">
-    <div class="card">
+<div class="card-deck mt-5">
+    <div class="card page-info">
       <div class="card-body">
         <h5 class="card-title text-center display-1"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </h5>
-        <p class="card-text text-center h1"> More than <b> {{posts_count}} </b>creative posts </p>
+        <p class="card-text text-center h1"> Over <b> {{posts_count}} </b>creative & fun posts </p>
       </div>
       
     </div>
-    <div class="card">
+    <div class="card page-info">
       <div class="card-body">
         <h5 class="card-title text-center display-1"><i class="fa fa-users" aria-hidden="true"></i></h5>
         <p class="card-text text-center h1"> Currently with <b>{{users_count}}</b> users registered</p>
       </div>
       
     </div>
-    <div class="card">
+    <div class="card page-info">
       <div class="card-body">
         <h5 class="card-title text-center display-1"><i class="fa fa-comment-o" aria-hidden="true"></i></h5>
-        <p class="card-text text-center h1">Over <b>{{comments_count}}</b> comments</p>
+        <p class="card-text text-center h1">More than <b>{{comments_count}}</b> comments</p>
       </div>
       
     </div>
   </div>
-<div class="background-image">
 
+  <div>
+
+  </div>
+
+  <div class="display-4 text-center mt-5">
+      Share your great thoughts with the world and <a class="text-info font-weight-bold" href="{% url 'blog-post-new' %}">Make a new post</a> about anything you wish. <br>
+      Sky is the only limit here.
+   </div>
+   <div class="text-center display-4 mt-2">
+         
+   </div>
+
+    <!-- <div class="display-1 text-danger">
+        <i class="fa fa-heart-o" aria-hidden="true"></i>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+    </div> -->
 
   
     
