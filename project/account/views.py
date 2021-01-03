@@ -31,8 +31,8 @@ def profile_inspect(request, pk):
     """ Zobrazenie profilu ľubovoľného užívateľa """
 
     found_user = get_object_or_404(User, pk=pk)
-    created_posts = Post.objects.get(author=found_user)
-    created_comments = Comment.objects.get(author=found_user)
+    created_posts = Post.objects.filter(author=found_user).all()
+    created_comments = Comment.objects.filter(author=found_user).all()
 
     context = {
         "title": found_user.username,
