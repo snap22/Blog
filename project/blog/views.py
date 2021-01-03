@@ -87,7 +87,12 @@ def post_new(request):
             return redirect("blog-home")
     else:
         form = PostCreationForm()
-    return render(request, "blog/posts/post_add.html", {"form": form})
+
+    context = {
+        "form": form,
+        "title": "New Post",
+    }
+    return render(request, "blog/posts/post_add.html", context=context)
 
 
 def post_view(request, pk):
@@ -114,6 +119,7 @@ def post_view(request, pk):
         "comments": comments,
         "form": comment_form,
         "comments_count": comments.count(),
+        "title": found_post.title,
     }
 
     return render(request, "blog/posts/post_view.html", context)
