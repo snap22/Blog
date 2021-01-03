@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.decorators import login_required
-
-
 from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm
+from .models import User
+from blog.models import Post, Comment
 
 
 
@@ -24,13 +24,30 @@ def register(request):
             return redirect("blog-home")
     else:
         form = AccountCreationForm()
-    return render(request, "account/register.html", {"form": form})
+    return render(request, "account/register.html", {"form": form, "title":"Register"})
+
+
+def profile_inspect(request, pk):
+    """ Zobrazenie profilu ľubovoľného užívateľa """
+
+    found_user = get_object_or_404(User, pk=pk)
+    created_posts = Post.objects.get(author=found_user)
+    created_comments = Comment.objects.get(author=found_user)
+
+    context = {
+        "title": found_user.username,
+        "posts_count": created_posts.count(),
+        "comments_count": created_comments.count(),
+        "found_user": found_user,
+    }
+
+    return render(request, "account/inspect.html", context=context)
 
 
 #Possible Exception: RelatedObjectDoesNotExist
 @login_required
 def profile(request):
-    """ Profil užívateľa """
+    """ Profil prihláseného užívateľa """
     
     if request.method == "POST":
         user_form = AccountUpdateForm(request.POST, instance=request.user)
