@@ -33,7 +33,11 @@
 
     <div class="mt-5 mb-5">
         {% if request.GET.search %}
-            <h1> Search results for <b> {{request.GET.search }}</b>  ({{count}})</h1>
+                <h1> Search results for <b> {{request.GET.search }}</b>  ({{count}})</h1>
+                {% if count == 0 %}
+                    <h1> Sorry, no results were found </h1>
+                    <h3 class="text-muted">Check if the words are typed correctly or try searching for something else</h3>
+                {% endif %}
         {% else %}
             <h1> Browse posts </h1>
         {% endif %}
