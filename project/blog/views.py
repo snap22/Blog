@@ -45,7 +45,7 @@ def welcome(request):
 
 # POSTS
 def browse_posts(request):
-    """ Vyhlľadávanie príspevkov na základe zadaného titulu a autora """
+    """ Vyhlľadávanie príspevkov na základe zadaného slova """
 
     post_search = request.GET.get("search")
     post_order = request.GET.get("order_by")
@@ -69,7 +69,6 @@ def browse_posts(request):
         "count": count,
     }
     return render(request, "blog/browse.html", context=context)
-
 
 
 @login_required
