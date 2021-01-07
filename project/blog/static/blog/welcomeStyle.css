@@ -1,12 +1,27 @@
-html, body {
-    background-image: url("welcome.jpg");
-    max-width: 100%;
+ body {
+    background-image: url("welcome.png");
+    background-size: cover;
+    /* background-repeat: no-repeat; */
+    height: auto;
+
+    /* background-size: 100% 100%; */
+    /* width: 100%; */
+    /* max-width: 100%; */
+    /* max-width: 1920px; */
+    /* height: auto; */
     
 }
 
 img {
     max-width: 100%;
     
+}
+
+.brand {
+    background-color: rgba(2, 2, 2, 0.164);
+    padding: 5px;
+    padding-bottom: 20px;
+    border-radius: 50px 50px 50px 50px;
 }
 
 .brand-register {
@@ -25,6 +40,7 @@ img {
 .brand-description {
     color: black;
     font-size: 20px;
+    
     
 }
 
