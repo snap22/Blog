@@ -89,16 +89,22 @@
         </div>
     
         <!-- Comments List -->
-        <div class="mt-5">
+        <div class="mt-1 border-top">
             {% for comment in comments %}
                 <div class="row mt-2 p-2 ml-1 ">
                     <div class="col-md-1">
                         <img class="rounded" src="{{ comment.author.profile.picture.url }}" width="50" height="50" alt="Picture">
                     </div>
-                    <div class="col-md ">
+                    <div class="col-md">
                         
-                        <div class="comment-content border-bottom p-2">
-                            {{ comment.content }}
+                        <div class="card comment-content border-bottom p-2 bg-white rounded ">
+                            <div style="word-break: break-word;">
+                                <p class="text-break">
+                                    {{ comment.content }}
+                                </p>
+                            </div>
+                            
+                            
                         </div>
                         <div class="text-muted comment-detail">
                             Comment posted by <a href="{% url 'account-profile-inspect' comment.author.id %}" class="text-info">{{ comment.author.username }}</a> on {{ comment.date|date:"d F, Y"}}
@@ -106,9 +112,9 @@
                     </div>
                     <div class="col-md-1">
                         {% if comment.author == user %}
-                            <div class="btn-group">
-                                <button class="btn btn-light btn dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    
+                            <div class="btn-group text-center">
+                                <button class="btn btn-light btn-lg text-dark rounded " type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-cog" aria-hidden="true"></i>
                                 </button>
                                 <div class="dropdown-menu">
                                     <a class="dropdown-item text-dark" href="{% url 'blog-comment-edit' comment.id %}"> Edit </a>
