@@ -19,7 +19,14 @@ class AccountCreationForm(UserCreationForm):
 class AccountUpdateForm(forms.ModelForm):
     """ Formulár pre aktualizáciu údajov o uzívateľovi """
 
+    username = forms.CharField(max_length=150)
     email = forms.EmailField()
+
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError(f"{username} is already in use.")
+        return username
 
     class Meta:
         model = User
