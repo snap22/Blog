@@ -44,7 +44,6 @@ def profile_inspect(request, pk):
     return render(request, "account/inspect.html", context=context)
 
 
-#Possible Exception: RelatedObjectDoesNotExist
 @login_required
 def profile(request):
     """ Profil prihláseného užívateľa """
