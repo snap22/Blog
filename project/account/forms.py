@@ -28,6 +28,12 @@ class AccountUpdateForm(forms.ModelForm):
             raise forms.ValidationError(f"{username} is already in use.")
         return username
 
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(f"{email} is already in use.")
+        return email
+
     class Meta:
         model = User
         fields = ["username","email"]
