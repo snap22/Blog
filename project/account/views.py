@@ -58,6 +58,8 @@ def profile(request):
             profile_form.save()
             messages.success(request, f"Your account has been updated.")
             return redirect("account-profile")
+        else:
+            messages.error(request, "Error! Couldn't update your account.")
 
     else:
         user_form = AccountUpdateForm(instance=request.user)
