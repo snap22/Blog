@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
-from django.contrib.auth import authenticate, logout, login
+from django.contrib.auth import authenticate, logout, login, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
 from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm
 from .models import User
@@ -42,6 +43,29 @@ def profile_inspect(request, pk):
     }
 
     return render(request, "account/inspect.html", context=context)
+
+
+@login_required
+def change_password(request):
+    """ Zmena hesla užívateľa """
+
+    if request.method == "POST":
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, 'Your password was successfully updated!')
+            return redirect("account-profile")
+
+    else:
+        form = PasswordChangeForm(request.user)
+
+    shit = {
+        "title": request.user.username,
+        "form": form,
+    }
+    
+    return render(request, "account/password_change.html", shit)
 
 
 @login_required
