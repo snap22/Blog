@@ -9,7 +9,7 @@
         </div>
         <div class="col-md ">
             
-            <div class="card">
+            <div class="card border border-dark">
                 <div class=" text-center card-body">
                     <b class="display-2 card-title font-weight-bold"> {{ user.username }} </b>
                 
@@ -29,10 +29,11 @@
     <div class="row mt-5">
         <div class="col-md">
             <p>
-                <a class="btn btn-outline-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                <a class="btn btn-lg btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                   Update Account Info
                 </a>
-                
+                <a href="{% url 'account-password-change' %}" class="btn btn-lg btn-secondary">Change Password</a>
+                <a href="{% url 'blog-post-new' %}" class="btn btn-lg btn-primary">Create A Post</a>
               </p>
         </div>
     </div>
