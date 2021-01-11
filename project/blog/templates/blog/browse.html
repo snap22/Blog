@@ -3,8 +3,8 @@
 {% block content_big %}
 
 <div id="accordion">
-    <div class="card">
-      <div class="card-header bg-white" id="headingOne">
+    <div class="card ">
+      <div class="card-header bg-info" id="headingOne">
         <h5 class="mb-0">
           <button class="btn btn-dark btn-lg btn-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Search filters
@@ -15,12 +15,12 @@
 
   
       <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-        <div class="card-body bg-light">
+        <div class="card-body border border-info bg-light">
 
             <form method="GET" class="mt-1 p-2"> 
                 <fieldset class="form-group ml-3 mr-3">
                     {{ form|crispy }}
-                    <button class="btn btn-lg btn-primary mt-1 pull-right" type="submit"> <i class="fa fa-search" aria-hidden="true"></i> Search </button>
+                    <button class="btn btn-lg btn-info mt-1 pull-right" type="submit"> <i class="fa fa-search" aria-hidden="true"></i> Search </button>
                 </fieldset>
             </form>
 
@@ -44,7 +44,7 @@
     </div>
 
     {% for post in posts %}
-        <div class="card  mt-4">
+        <div class="card border border-dark mt-4">
             <div class="card-body">
                 <div class="row">
                     <div class="col-md-1">
