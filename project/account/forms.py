@@ -39,8 +39,6 @@ class AccountUpdateForm(forms.ModelForm):
         fields = ["username","email"]
 
 
-
-
 class ProfileUpdateForm(forms.ModelForm):
     """ Formulár pre aktualizáciu údajov o profile uzívateľa """
 
