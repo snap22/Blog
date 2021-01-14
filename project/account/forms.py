@@ -36,7 +36,7 @@ class AccountUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ["username","email"]
+        fields = ["username", "email"]
 
 
 class ProfileUpdateForm(forms.ModelForm):
@@ -45,3 +45,23 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ["picture", "info"]
+
+
+class AccountDeleteForm(forms.Form):
+    """ Formulár pre potvrdenie vymazania účtu """
+
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def __init__(self, *args, **kwargs):
+        self.request = kwargs.pop('request', None)
+        super(AccountDeleteForm, self).__init__(*args, **kwargs)
+
+    def clean_password(self):
+        user = self.request.user
+        password = self.cleaned_data["password"]
+        if not user.check_password(password):
+            raise forms.ValidationError("The password is incorrect.")
+        return password
+            
+
+
