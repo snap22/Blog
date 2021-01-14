@@ -53,7 +53,7 @@
 
                     <div class="col-md">
                         <h5>
-                            <span class="text-dark"> </span> <a href="{% url 'blog-browse' %}?search={{post.author.username}}" class="text-info">{{post.author.username}}</a>
+                            <span class="text-dark"> </span> <a href="{% url 'account-profile-inspect' post.author.pk %}" class="text-info">{{post.author.username}}</a>
                         </h5>
                         <h1 class="">
                             <a href="{% url 'blog-post-view' post.id %}" class="text-dark font-weight-bold">{{ post.title|upper }}</a> 
