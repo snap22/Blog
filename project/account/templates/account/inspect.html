@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content_big %}
 
-    <div class="card-deck mt-5 ">
+    <div class="card-deck mt-5 "> 
         <div class="card border-dark ">
           <div class="card-body" >  
                     <img src="{{ found_user.profile.get_picture }}" alt="Profile picture" width="150" height="150" class="float-left rounded mr-5">
@@ -17,12 +17,12 @@
         </div>
         <div class="card border-info">
                 <div class="card-header text-info">
-                    <i class="fa fa-address-card-o" aria-hidden="true"></i> Some stats 
+                    <i class="fa fa-address-card-o" aria-hidden="true"></i> Basic Stats
                 </div>
           <div class="card-body">
               <div class="row">
                   <div class="col-sm text-center">
-                    <span class="display-3 "> <a href="{% url 'blog-browse' %}?search={{found_user.username}}" class="text-decoration-none text-info"><b>{{ posts_count }} </b> </a></span> <br>
+                    <span class="display-3 text-info"> <b>{{ posts_count }} </b></span> <br>
                     <span class="text-muted"> Posts published </span>
                   </div>
                   <div class="col-sm text-center">
@@ -33,9 +33,12 @@
               </div>
           </div>
         </div>
-  
+    </div>
 
-    
-
-
+        <div class="row mt-5">
+          <div class="col-md">
+            <a class="btn btn-lg btn-outline-info" href="{% url 'blog-browse' %}?search={{found_user.username}}"> Search for <b> {{ found_user.username }} </b></a>
+          </div>
+        </div>
+        
 {% endblock content_big %}
