@@ -7,4 +7,5 @@ urlpatterns = [
     path("profile/", views.profile, name="account-profile"),
     path("profile/inspect/<int:pk>/", views.profile_inspect, name="account-profile-inspect"),
     path("profile/password/", views.change_password, name="account-password-change"),
+    path("profile/delete/", views.delete_account, name="account-delete"),
 ]
