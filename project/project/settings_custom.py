@@ -1,0 +1,8 @@
+from .settings import MEDIA_URL
+
+
+PROFILE_PICTURES_LOCATION = "profile_pictures"
+
+DEFAULT_PICTURE = "default.png"
+
+DEFAULT_PICTURE_URL = MEDIA_URL + DEFAULT_PICTURE
