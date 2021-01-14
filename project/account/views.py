@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, logout, login, update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.decorators import login_required
-from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm
+from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm, AccountDeleteForm
 from .models import User
 from blog.models import Post, Comment
 
@@ -79,7 +79,7 @@ def profile(request):
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
-            messages.success(request, f"Your account has been updated.")
+            messages.success(request, "Your account has been updated.")
             return redirect("account-profile")
         else:
             messages.error(request, "Error! Couldn't update your account.")
@@ -96,4 +96,24 @@ def profile(request):
 
     return render(request, "account/profile.html", context)
 
+
+@login_required
+def delete_account(request):
+    """ Vymazanie účtu """
+
+    if request.method == "POST":
+        form = AccountDeleteForm(request.POST, request=request)
+        if form.is_valid():
+            request.user.delete()
+            logout(request)
+            messages.info(request, "Your account has been deleted.")
+            return render(request, "account/account_delete_confirm.html")
+    else:
+        form = AccountDeleteForm()
+
+    context = {
+        "form": form,
+    }
+
+    return render(request, "account/account_delete.html", context)
 
