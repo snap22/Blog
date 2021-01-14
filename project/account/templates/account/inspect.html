@@ -5,7 +5,7 @@
     <div class="card-deck mt-5 ">
         <div class="card border-dark ">
           <div class="card-body" >  
-                    <img src="{{ found_user.profile.picture.url }}" alt="Profile picture" width="150" height="150" class="float-left rounded mr-5">
+                    <img src="{{ found_user.profile.get_picture }}" alt="Profile picture" width="150" height="150" class="float-left rounded mr-5">
                     <div class="h1"> {{ found_user.username }} </div>
                     <div class="h5 mt-2">
                         {{ found_user.email }} 
