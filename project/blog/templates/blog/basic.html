@@ -78,7 +78,11 @@
               
             {% else %}
             <li class="nav-item">
-              <a class="nav-link btn btn-warning text-dark font-weight-bold" href="{% url 'login' %}">Log In</a>
+              <a class="nav-link btn btn-warning text-dark font-weight-bold mr-2" href="{% url 'login' %}">Log In</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link btn btn-info text-dark font-weight-bold" href="{% url 'account-register' %}">Register</a>
             </li>
             {% endif %}
 
