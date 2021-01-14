@@ -18,9 +18,6 @@ from .models import Post, Comment
 def home(request):
     """ Domovská stránka"""
 
-    if not request.user.is_authenticated:
-        return redirect("blog-welcome")
-    
     posts_count = Post.objects.all().count()
     users_count = User.objects.all().count()
     comments_count = Comment.objects.all().count()
