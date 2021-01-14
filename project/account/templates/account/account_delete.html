@@ -1,0 +1,22 @@
+{% extends "blog/basic.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="content-section">
+        <form method="post">
+            <!-- Token for django forms -->
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-3"> Are you sure you want to delete your account? </legend>
+                {{ form|crispy }}
+            </fieldset>
+
+            <!-- Submit button  -->
+            <div class="form-group mt-3">
+                <button class="btn btn-outline-dark" type="submit">Delete</button>
+                <a href="#">Cancel</a>
+            </div>
+        </form>
+        
+
+    </div>
+{% endblock content %}
