@@ -37,13 +37,31 @@
 
     <div class="row mt-5">
         <div class="col-md">
-            <p>
-                <a class="btn btn-lg btn-dark" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                  Update Account Info
-                </a>
-                <a href="{% url 'account-password-change' %}" class="btn btn-lg btn-secondary">Change Password</a>
-                <a href="{% url 'blog-post-new' %}" class="btn btn-lg btn-primary">Create A Post</a>
-              </p>
+            <div class="row">
+                <div class="col-md">
+                    <div class="card bg-dark text-center">
+                        <div class="card-body">
+                            <a class="btn btn-lg btn-outline-light mr-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                                Update Info
+                            </a>
+                            <a href="{% url 'account-password-change' %}" class="btn btn-lg btn-outline-light mr-2">Change Password</a>
+                            <a href="#" class="btn btn-lg btn-outline-danger mr-2">Delete Account</a>
+                         </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-dark text-center">
+                        <div class="card-body">
+                        <a href="{% url 'blog-post-new' %}" class="btn btn-lg btn-outline-info mr-2">Create A Post</a>
+                        <a href="{% url 'account-profile-inspect' user.id %}" class="btn btn-lg btn-outline-info mr-2">Inspect</a>
+                         </div>
+                    </div>
+                </div>
+                
+            </div>
+
+              
+
         </div>
     </div>
 
@@ -51,20 +69,25 @@
         <div class="col-md">
             <div class="content-section collapse" id="collapseExample">
                 <form method="post" enctype="multipart/form-data">
-                    <!-- Token for django forms -->
-                    {% csrf_token %}
-                    <fieldset class="form-group">
-                        
-                        {{ user_form|crispy }}
-                        {{ profile_form|crispy }}
-                    </fieldset>
+                    <div class="card bg-light border border-dark">
+                        <div class="card-body">
+                            <!-- Token for django forms -->
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            
+                            {{ user_form|crispy }}
+                            {{ profile_form|crispy }}
+                        </fieldset>
 
-                    <!-- Submit button  -->
-                    <div class="form-group mt-3">
-                        <button class="btn btn-outline-dark" type="submit">Update</button>
+                        <!-- Submit button  -->
+                        <div class="form-group mt-3">
+                            <button class="btn btn-lg btn-dark" type="submit">Update</button>
+                        </div>
+                        </div>
                     </div>
+                    
                 </form>
-                <div class="border-top pt-3 mt-2">
+                
                     
 
                 </div>
