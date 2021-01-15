@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import UpdateView, DeleteView
+from django.core.paginator import Paginator
 from django.urls import reverse
 from django.db.models import Q
 from account.models import User
@@ -40,7 +41,7 @@ def welcome(request):
     return render(request, "blog/main/welcome.html")
 
 
-# POSTS
+
 def browse_posts(request):
     """ Vyhlľadávanie príspevkov na základe zadaného slova """
 
@@ -57,17 +58,23 @@ def browse_posts(request):
         post_search = ""
     
     form = SearchPostsForm(initial=default_form_values)
-    found_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
-    count = found_posts.count()
+    filtered_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
+    posts_count = filtered_posts.count()
+
+    paginator = Paginator(filtered_posts, 1)
+    page_number = request.GET.get("page")
+    found_posts = paginator.get_page(page_number)
+
+    
     context = {
         "posts": found_posts,
         "form": form,
         "title": "Search",
-        "count": count,
+        "count": posts_count,
     }
     return render(request, "blog/main/browse.html", context=context)
 
-
+# POSTS
 @login_required
 def post_new(request):
     """ Tvorba nového príspevku """
