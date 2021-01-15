@@ -30,14 +30,14 @@ def home(request):
     }
 
 
-    return render(request, "blog/home.html", context=context)
+    return render(request, "blog/main/home.html", context=context)
     
         
 
 def welcome(request):
     """ Úvodná stránka """
 
-    return render(request, "blog/welcome.html")
+    return render(request, "blog/main/welcome.html")
 
 
 # POSTS
@@ -65,7 +65,7 @@ def browse_posts(request):
         "title": "Search",
         "count": count,
     }
-    return render(request, "blog/browse.html", context=context)
+    return render(request, "blog/main/browse.html", context=context)
 
 
 @login_required
