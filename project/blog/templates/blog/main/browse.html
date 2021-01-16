@@ -87,19 +87,19 @@
         <div class="btn-group mr-1" role="group" aria-label="First group">
             <!-- <button type="button" class="btn btn-secondary">1</button> -->
             {% if posts.has_previous %}
-                <a href="?{% url_replace request 'page' 1 %}" class="btn btn-secondary"> First </a>
-                <a href="?{% url_replace request 'page' posts.previous_page_number %}" class="btn btn-secondary ml-1"> <i class="fa fa-chevron-left" aria-hidden="true"></i> </a>
+                <a href="?{% url_replace request 'page' 1 %}" class="btn btn-info"> First </a>
+                <a href="?{% url_replace request 'page' posts.previous_page_number %}" class="btn btn-info ml-1"> <i class="fa fa-chevron-left" aria-hidden="true"></i> </a>
             {% endif %}
         </div>
 
         <div class="btn-group mr-1" role="group" aria-label="Second group">
-            <a href="?{% url_replace request 'page' posts.number %}" class="btn btn-outline-secondary"> {{ posts.number }}</a>
+            <a href="?{% url_replace request 'page' posts.number %}" class="btn btn-outline-info"> {{ posts.number }}</a>
         </div>
                 
         <div class="btn-group mr-1" role="group" aria-label="Third group">
             {% if posts.has_next %}
-                <a href="?{% url_replace request 'page' posts.next_page_number %}" class="btn btn-secondary mr-1"> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
-                <a href="?{% url_replace request 'page' posts.paginator.num_pages %}" class="btn btn-secondary"> Last </a>
+                <a href="?{% url_replace request 'page' posts.next_page_number %}" class="btn btn-info mr-1"> <i class="fa fa-chevron-right" aria-hidden="true"></i></a>
+                <a href="?{% url_replace request 'page' posts.paginator.num_pages %}" class="btn btn-info"> Last </a>
             {% endif %}
         </div>
     </div>
