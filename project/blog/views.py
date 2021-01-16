@@ -61,11 +61,12 @@ def browse_posts(request):
     filtered_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
     posts_count = filtered_posts.count()
 
-    paginator = Paginator(filtered_posts, 1)
+    posts_per_page = 5
+
+    paginator = Paginator(filtered_posts, posts_per_page)
     page_number = request.GET.get("page")
     found_posts = paginator.get_page(page_number)
 
-    
     context = {
         "posts": found_posts,
         "form": form,
