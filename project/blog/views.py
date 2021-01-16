@@ -61,7 +61,7 @@ def browse_posts(request):
     filtered_posts = Post.objects.filter(Q(title__contains=post_search) | Q(author__username__contains=post_search)).order_by(order)
     posts_count = filtered_posts.count()
 
-    posts_per_page = 5
+    posts_per_page = 4
 
     paginator = Paginator(filtered_posts, posts_per_page)
     page_number = request.GET.get("page")
