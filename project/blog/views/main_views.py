@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.db.models import Q
 from account.models import User
-from blog.forms import PostCreationForm, SearchPostsForm
+from blog.forms import SearchPostsForm
 from blog.models import Post, Comment
 
 
@@ -21,7 +21,6 @@ def home(request):
         "comments_count": comments_count,
     }
 
-
     return render(request, "blog/main/home.html", context=context)
     
         
@@ -29,6 +28,18 @@ def welcome(request):
     """ Úvodná stránka """
 
     return render(request, "blog/main/welcome.html")
+
+
+def about(request):
+    """ Informácie ohľadom stránky """
+
+    return render(request, "blog/main/about.html")
+
+
+def contacts(request):
+    """ Stránka s kontaktnými informáciami """
+
+    return render(request, "blog/main/contacts.html")
 
 
 def browse_posts(request):
