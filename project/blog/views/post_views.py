@@ -30,7 +30,7 @@ def post_new(request):
         "form": form,
         "title": "New Post",
     }
-    return render(request, "blog/posts/post_add.html", context=context)
+    return render(request, "blog/posts/post_add.html", context)
 
 
 def post_view(request, pk):
