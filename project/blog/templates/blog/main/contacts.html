@@ -1,27 +1,67 @@
 {% extends "blog/basic.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-
-    <div class="display-4">
-        Contact Us
+{% block content_big %}
+<div class="row">
+    
+    <div class="col-md-6">
+        <div class="border border-dark bg-light p-3 rounded">
+            <form method="post" class="mt-1">
+                <!-- Token for django forms -->
+                {% csrf_token %}
+                <fieldset class="form-group">
+                    {{ form | crispy }}
+                </fieldset>
+        
+                <!-- Submit button  -->
+                <div class="form-group mt-1 border-top mb-2">
+                    <button class="btn btn-lg btn-info mt-1 " type="submit"> Send </button>   
+                </div>
+            </form>
+        </div>
     </div>
 
-    <form method="post" class="mt-1">
-        <!-- Token for django forms -->
-        {% csrf_token %}
-        <fieldset class="form-group">
-            {{ form | crispy }}
-        </fieldset>
+    <div class="col-md-6 bg-dark rounded text-light">
+        <div class="mt-5 p-3 text-center ">
+            <div class="display-1 border-bottom border-info text-info ">
+                Need help?
+            </div>
+            <div class="display-4  mt-3 text-light">
+                Let us know by filling in the form
+            </div>
+            <div class="mt-5 display-4 text-info">
+                <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </div>
+            <div class="mt-5 text-left ">
+                <div class="mt-5">
+                    <p class="h3 mt-5">
+                        Contact information
+                    </p>
+                    <table class="mt-3">
+                        <tr>
+                            <th class="text-left"> Phone number </th>
+                            <td class="text-right"> +421 123 456 789 </td>
+                        </tr>
+                        <tr>
+                            <th class="text-left"> Contact mail </th>
+                            <td class="text-right"> support@blob.com </td>
+                        </tr>
+                    </table>
+                    <p class="mt-2">
+                        177, Lomond Rd <br>
+                        North Lanarkshire <br>
+                        Coatbridge <br>
+                        ML5 2NJ
+                    </p>
+                </div>
+                
 
-        <!-- Submit button  -->
-        <div class="form-group mt-1 border-top mb-2">
-            <button class="btn btn-lg btn-primary mt-1 " type="submit"> Send </button>
-            
+            </div>
         </div>
-
-        <div class="mt-2">
-
-        </div>
-    </form>
+        
+    </div>
+</div>
     
-{% endblock content %}
+
+    
+    
+{% endblock content_big %}
