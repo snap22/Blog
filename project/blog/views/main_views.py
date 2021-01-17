@@ -2,8 +2,9 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.db.models import Q
 from account.models import User
-from blog.forms import SearchPostsForm
-from blog.models import Post, Comment
+from blog.forms import SearchPostsForm, ContactForm
+from blog.models import Post, Comment, ContactMessage
+from django.contrib import messages
 
 
 
@@ -39,7 +40,24 @@ def about(request):
 def contacts(request):
     """ Stránka s kontaktnými informáciami """
 
-    return render(request, "blog/main/contacts.html")
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Your message was sent.")
+    else:
+        initial_values = {}
+        if request.user.is_authenticated:
+            initial_values["sender_name"] = request.user.username
+            initial_values["sender_email"] = request.user.email
+            
+        form = ContactForm(initial=initial_values)
+    
+    context = {
+        'form': form,
+        "title": "Contact",
+    }
+    return render(request, "blog/main/contacts.html", context)
 
 
 def browse_posts(request):
