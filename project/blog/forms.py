@@ -33,6 +33,9 @@ class ContactForm(forms.ModelForm):
             "sender_email": "Your email",
             "help_type": "How can we help you?",
         }
+        widgets = {
+            'content': forms.Textarea(attrs={'rows': 4, 'placeholder':'Write here','class':'form-control'}),
+        }
 
 
 class SearchPostsForm(forms.Form):
