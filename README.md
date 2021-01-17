@@ -1,26 +1,26 @@
-# Semestrálna Práca - Blog
+# Blog
 Semestrálka pre predmet UNIX - Vývojové prostredie 2020/2021
 
-Jednoduchý blog vytvorený pomocou balíčka **Django**
+Jednoduchý blog vytvorený pomocou modulu **Django**
 
 ### Inštalácia
 *Dobrovoľné* - vytvorenie si virtuálneho prostredia **env** a jeho aktivácia
 
 ```bash
 python -m venv env
-env/bin/activate
+source env/bin/activate
 ```
 
 Inštalácia potrebných balíčkov
 ```bash
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 ### Spustenie programu
 Program je možné spustiť pomocou nasledovných príkazov:
 ```bash
 cd project
-python manage.py runserver
+python3 manage.py runserver
 ```
 
 Následne je potrebné ísť na webovú stránku http://localhost:8000/ .
