@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Comment
+from .models import Post, Comment, ContactMessage
 
 
 class PostCreationForm(forms.ModelForm):
@@ -20,6 +20,14 @@ class CommentCreationForm(forms.ModelForm):
         widgets = {
             'content': forms.Textarea(attrs={'rows': 1, 'placeholder':'Write a comment here...','class':'form-control'}),
         }
+
+
+class ContactForm(forms.ModelForm):
+    """ Formulár pre kontaktovanie """
+
+    class Meta:
+        model = ContactMessage
+        fields = ["title", "sender_name", "sender_email", "help_type","content"]
 
 
 class SearchPostsForm(forms.Form):
