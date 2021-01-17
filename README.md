@@ -7,7 +7,7 @@ Jednoduchý blog vytvorený pomocou modulu **Django**
 *Dobrovoľné* - vytvorenie si virtuálneho prostredia **env** a jeho aktivácia
 
 ```bash
-python -m venv env
+python3 -m venv env
 source env/bin/activate
 ```
 
