@@ -66,15 +66,9 @@
                     </div>
  
                 </div>
-
-                <div class="row mt-2">
-                    <div class="col-md">
-                        <div class="border-top text-muted">
-                            Posted at {{ post.date|date:"G:i" }} on {{ post.date|date:"l, j F, Y " }}
-                        </div>
-                    </div>
-                </div>
-                
+            </div>
+            <div class="card-footer text-muted">
+                Posted at {{ post.date|date:"G:i" }} on {{ post.date|date:"l, j F, Y " }}
             </div>
         </div>
     {% endfor %}
