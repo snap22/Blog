@@ -27,7 +27,12 @@ class ContactForm(forms.ModelForm):
 
     class Meta:
         model = ContactMessage
-        fields = ["title", "sender_name", "sender_email", "help_type","content"]
+        fields = ["title", "sender_name", "sender_email", "help_type", "content"]
+        labels = {
+            "sender_name": "Your name",
+            "sender_email": "Your email",
+            "help_type": "How can we help you?",
+        }
 
 
 class SearchPostsForm(forms.Form):
