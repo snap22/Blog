@@ -1,8 +1,27 @@
 {% extends "blog/basic.html" %}
-{% block content_big %}
+{% load crispy_forms_tags %}
+{% block content %}
 
     <div class="display-4">
-        Contact Information
+        Contact Us
     </div>
+
+    <form method="post" class="mt-1">
+        <!-- Token for django forms -->
+        {% csrf_token %}
+        <fieldset class="form-group">
+            {{ form | crispy }}
+        </fieldset>
+
+        <!-- Submit button  -->
+        <div class="form-group mt-1 border-top mb-2">
+            <button class="btn btn-lg btn-primary mt-1 " type="submit"> Send </button>
+            
+        </div>
+
+        <div class="mt-2">
+
+        </div>
+    </form>
     
-{% endblock content_big %}
+{% endblock content %}
