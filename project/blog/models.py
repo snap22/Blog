@@ -46,9 +46,9 @@ class ContactMessage(models.Model):
         ("4","Other"),
     )
 
-    title = models.CharField(max_length = 100)
-    content = models.TextField()
-    sender_name = models.CharField(max_length = 150)
+    title = models.CharField(max_length=100)
+    content = models.TextField(max_length=250)
+    sender_name = models.CharField(max_length=150)
     sender_email = models.EmailField()
     date = models.DateTimeField(default=timezone.now)
     help_type = models.CharField(choices=CHOICES, max_length=1)
