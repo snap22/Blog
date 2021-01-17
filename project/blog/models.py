@@ -27,9 +27,31 @@ class Comment(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    content = models.TextField()
+    content = models.TextField(max_length=250)
     date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"Comment to: [{self.post.title}] by {self.author.username}"
 
+
+class ContactMessage(models.Model):
+    """ Model pre kontaktnú správu """
+
+    CHOICES = (
+        ("","Choose a type..."),
+        ("0","Report an issue"),
+        ("1","Report a post"),
+        ("2","Feedback"),
+        ("3","Support"),
+        ("4","Other"),
+    )
+
+    title = models.CharField(max_length = 100)
+    content = models.TextField()
+    sender_name = models.CharField(max_length = 150)
+    sender_email = models.EmailField()
+    date = models.DateTimeField(default=timezone.now)
+    help_type = models.CharField(choices=CHOICES, max_length=1)
+
+    def __str__(self):
+        return f"Contact message '{self.title}' by {self.sender_name}"
