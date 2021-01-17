@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.db.models import Q
 from account.models import User
@@ -45,6 +45,7 @@ def contacts(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Your message was sent.")
+            return redirect("blog-home")
     else:
         initial_values = {}
         if request.user.is_authenticated:
