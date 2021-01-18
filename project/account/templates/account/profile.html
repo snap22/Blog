@@ -41,27 +41,24 @@
                 <div class="col-md">
                     <div class="card bg-dark text-center">
                         <div class="card-body">
-                            <a class="btn btn-lg btn-outline-light mr-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                            <a class="btn btn-lg btn-light mr-2" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                                 Update Info
                             </a>
-                            <a href="{% url 'account-password-change' %}" class="btn btn-lg btn-outline-light mr-2">Change Password</a>
-                            <a href="{% url 'account-delete' %}" class="btn btn-lg btn-outline-danger mr-2">Delete Account</a>
+                            <a href="{% url 'account-password-change' %}" class="btn btn-lg btn-light mr-2">Change Password</a>
+                            <a href="{% url 'account-delete' %}" class="btn btn-lg btn-danger mr-2">Delete Account</a>
                          </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="card bg-dark text-center">
                         <div class="card-body">
-                        <a href="{% url 'blog-post-new' %}" class="btn btn-lg btn-outline-info mr-2">Create A Post</a>
-                        <a href="{% url 'account-profile-inspect' user.id %}" class="btn btn-lg btn-outline-info mr-2">Inspect</a>
+                        <a href="{% url 'blog-post-new' %}" class="btn btn-lg btn-info mr-2">Create A Post</a>
+                        <a href="{% url 'account-profile-inspect' user.id %}" class="btn btn-lg btn-info mr-2">Inspect</a>
                          </div>
                     </div>
                 </div>
                 
             </div>
-
-              
-
         </div>
     </div>
 
@@ -71,18 +68,14 @@
                 <form method="post" enctype="multipart/form-data">
                     <div class="card bg-light border border-dark">
                         <div class="card-body">
-                            <!-- Token for django forms -->
                         {% csrf_token %}
-                        <fieldset class="form-group">
-                            
-                            {{ user_form|crispy }}
-                            {{ profile_form|crispy }}
-                        </fieldset>
-
-                        <!-- Submit button  -->
-                        <div class="form-group mt-3">
-                            <button class="btn btn-lg btn-dark" type="submit">Update</button>
-                        </div>
+                            <fieldset class="form-group">
+                                {{ user_form|crispy }}
+                                {{ profile_form|crispy }}
+                            </fieldset>
+                            <div class="form-group mt-3">
+                                <button class="btn btn-lg btn-dark" type="submit">Update</button>
+                            </div>
                         </div>
                     </div>
                     
@@ -95,5 +88,4 @@
             </div>
         </div>
     </div>
-
 {% endblock content_big %}
