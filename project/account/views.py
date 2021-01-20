@@ -18,7 +18,7 @@ def register(request):
     if request.method == "POST":
         form = AccountCreationForm(request.POST)
         if form.is_valid():
-            form.save()     # ulozi uzivatela do databazy a zaroven hashne jeho heslo
+            form.save()
             new_user = authenticate(username=form.cleaned_data['username'],password=form.cleaned_data['password1'])
             login(request, new_user)
             messages.success(request, f"Account was created successfully.")
@@ -60,12 +60,12 @@ def change_password(request):
     else:
         form = PasswordChangeForm(request.user)
 
-    shit = {
+    context = {
         "title": request.user.username,
         "form": form,
     }
     
-    return render(request, "account/password_change.html", shit)
+    return render(request, "account/password_change.html", context)
 
 
 @login_required
