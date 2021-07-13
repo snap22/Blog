@@ -16,5 +16,14 @@ env
 #profile pictures - non default
 project/media/profile_pictures/
 
+*.log
+*.pot
+*.pyc
+__pycache__
+db.sqlite3
+media
+
 #other stuff
 other
+start.bat
+run.txt
