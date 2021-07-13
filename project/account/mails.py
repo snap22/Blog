@@ -11,5 +11,5 @@ def send_welcome_email(username, email):
                 text,
                 settings.EMAIL_HOST_USER,   
                 [email],    #prijimatelia
-                fail_silently=False     #False => vyhodi exception ak sa nieco pokazi
+                fail_silently= (settings.DEBUG != True)    #False => vyhodi exception ak sa nieco pokazi
             )
