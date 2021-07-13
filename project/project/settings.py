@@ -139,6 +139,13 @@ LOGIN_URL = "login"               # redirect ak je stranka login_required a uziv
 
 LOGOUT_REDIRECT_URL = "blog-welcome"    #redirect ak sa uzivatel odhlasi
 
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_NAME")
+EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_PASS")
+
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 10,
