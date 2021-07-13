@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import AccountCreationForm, AccountUpdateForm, ProfileUpdateForm, AccountDeleteForm
 from .models import User
 from blog.models import Post, Comment
-
+from .mails import send_welcome_email
 
 
 def register(request):
@@ -22,6 +22,7 @@ def register(request):
             new_user = authenticate(username=form.cleaned_data['username'],password=form.cleaned_data['password1'])
             login(request, new_user)
             messages.success(request, f"Account was created successfully.")
+            send_welcome_email(new_user.username, new_user.email)
             return redirect("blog-home")
     else:
         form = AccountCreationForm()
