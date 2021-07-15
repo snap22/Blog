@@ -12,29 +12,30 @@ class Profile(models.Model):
     picture = models.ImageField(default=DEFAULT_PICTURE, upload_to=PROFILE_PICTURES_LOCATION)
     info = models.TextField(default="No info was provided", blank=True, null=True)
     
-    def get_picture(self):
-        """ Metóda pre bezpečné získanie obrázka používateľa """
+    # def get_picture(self):
+    #     """ Metóda pre bezpečné získanie obrázka používateľa """
 
-        if os.path.exists(self.picture.path):
-            return self.picture.url
-        return DEFAULT_PICTURE_URL
+    #     if os.path.exists(self.picture.path):
+    #         return self.picture.url
+    #     return DEFAULT_PICTURE_URL
 
-    def save(self, *args, **kwargs):
-        """ Override pre uloženie - uloží obrázok vo vhodnej forme """
+    # nie je potrebna tato metoda lebo pillow nefunguje dobre s AWS
+    # def save(self, *args, **kwargs):
+    #     """ Override pre uloženie - uloží obrázok vo vhodnej forme """
 
-        super().save(*args, **kwargs)
+    #     super().save(*args, **kwargs)
 
-        try:
-            image = Image.open(self.picture.path)
+    #     try:
+    #         image = Image.open(self.picture.path)
             
-            if image.height > 300 or image.width > 300:
-                image.thumbnail((300,300))
-                image.save(self.picture.path)
+    #         if image.height > 300 or image.width > 300:
+    #             image.thumbnail((300,300))
+    #             image.save(self.picture.path)
 
-        except FileNotFoundError:   
-            pass
+    #     except FileNotFoundError:   
+    #         pass
 
-    def __str__(self):
-        return f"Profile for { self.user.username }"
+    # def __str__(self):
+    #     return f"Profile for { self.user.username }"
 
 
