@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-md-3 ">
             <div class="border-right">
-                <img src="{{ user.profile.get_picture }}" alt="Profile Picture" class="float-left rounded" width="250" height="250">
+                <img src="{{ user.profile.picture.url }}" alt="Profile Picture" class="float-left rounded" width="250" height="250">
             </div>
         </div>
         <div class="col-md ">
@@ -31,7 +31,7 @@
             {{ user.profile.picture.url }}
         </p>
         <p class="text-info">
-            {{ user.profile.picture.path }}
+            {{ user.profile.picture.url }}
         </p>
     </div> -->
 

@@ -60,7 +60,7 @@
                             {% csrf_token %}
                             <div class="form-row  p-2">
                                 <div class="col-md-1">
-                                    <img class="rounded border border-white" src="{{ user.profile.get_picture }}" width="50" height="50" alt="Picture">
+                                    <img class="rounded border border-white" src="{{ user.profile.picture.url }}" width="50" height="50" alt="Picture">
                                 </div>
                                 
                                 <div class="col-md">
@@ -93,7 +93,7 @@
             {% for comment in comments %}
                 <div class="row mt-2 p-2 ml-1 ">
                     <div class="col-md-1">
-                        <img class="rounded" src="{{ comment.author.profile.get_picture }}" width="50" height="50" alt="Picture">
+                        <img class="rounded" src="{{ comment.author.profile.picture.url }}" width="50" height="50" alt="Picture">
                     </div>
                     <div class="col-md">
                         
