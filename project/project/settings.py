@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "tinymce",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -139,12 +140,31 @@ LOGIN_URL = "login"               # redirect ak je stranka login_required a uziv
 
 LOGOUT_REDIRECT_URL = "blog-welcome"    #redirect ak sa uzivatel odhlasi
 
+# Pre email
+
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get("DJANGO_EMAIL_NAME")
 EMAIL_HOST_PASSWORD = os.environ.get("DJANGO_EMAIL_PASS")
+
+# Pre storage (AWS)
+
+AWS_ACCESS_KEY_ID = os.environ.get("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.environ.get("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("AWS_STORAGE_BUCKET_NAME")
+
+AWS_S3_FILE_OWERWRITE = False   # nezmeni subor ak ma rovnaky nazov ako uz je v buckete
+AWS_DEFAULT_ACL = None  
+
+AWS_S3_REGION_NAME = "eu-central-1"
+
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+# Pre Wysiwyg
 
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
