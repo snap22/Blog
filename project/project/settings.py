@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import django_heroku
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -177,3 +178,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'statusbar': True,
     'height':500,
 }
+
+django_heroku.settings(locals())
