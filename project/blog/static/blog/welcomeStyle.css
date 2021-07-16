@@ -1,5 +1,5 @@
  body {
-    background-image: url("welcome.png");
+    background-image: url("../../../media/images/welcome.png");
     background-size: cover;
     /* background-repeat: no-repeat; */
     height: auto;
