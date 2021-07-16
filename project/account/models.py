@@ -12,6 +12,9 @@ class Profile(models.Model):
     picture = models.ImageField(default=DEFAULT_PICTURE, upload_to=PROFILE_PICTURES_LOCATION)
     info = models.TextField(default="No info was provided", blank=True, null=True)
     
+    def __str__(self):
+        return f"Profile for { self.user.username }"
+        
     # def get_picture(self):
     #     """ Metóda pre bezpečné získanie obrázka používateľa """
 
@@ -35,7 +38,6 @@ class Profile(models.Model):
     #     except FileNotFoundError:   
     #         pass
 
-    # def __str__(self):
-    #     return f"Profile for { self.user.username }"
+
 
 
