@@ -5,9 +5,15 @@ from .models import Profile
 
 
 class AccountCreationForm(UserCreationForm):
-    """ Formulár pre vytvorenie novéo užívateľa, ktorý dedí z django formulára pre užívateľa"""
+    """ Formulár pre vytvorenie nového užívateľa, ktorý dedí z django formulára pre užívateľa"""
 
     email = forms.EmailField()
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError(f"Email is already used. Please choose a different one.")
+        return email
 
     class Meta:
         """ Vnorená trieda pre konfiguráciu """
