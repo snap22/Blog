@@ -19,7 +19,10 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 
-
+handler400 = "blog.views.error_views.error_400"
+handler403 = "blog.views.error_views.error_403"
+handler404 = "blog.views.error_views.error_404"
+handler500 = "blog.views.error_views.error_500"
 
 urlpatterns = [
     path("admin/", admin.site.urls),
