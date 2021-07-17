@@ -1,6 +1,12 @@
 from django.urls import path
 from . import views
 
+
+handler_400 = "blog.views.error_400"
+handler_403 = "blog.views.error_403"
+handler_404 = "blog.views.error_404"
+handler_500 = "blog.views.error_500"
+
 urlpatterns = [
     path('', views.welcome, name='blog-welcome'),
     path('home/', views.home, name='blog-home'),
