@@ -3,6 +3,8 @@ Semestrálka pre predmet UNIX - Vývojové prostredie 2020/2021
 
 Jednoduchý blog vytvorený pomocou modulu **Django**
 
+## Webstránku je možné navštíviť [tu](https://blognamedblob.herokuapp.com/)
+
 ### Inštalácia
 *Dobrovoľné* - vytvorenie si virtuálneho prostredia **env** a jeho aktivácia
 
